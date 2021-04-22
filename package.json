@@ -1,0 +1,20 @@
+{
+  "name": "qest",
+  "version": "1.0.0",
+  "description": "QEST - Bridge the gap between different IoT protocols",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sahithvibudhi/qest.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sahithvibudhi/qest/issues"
+  },
+  "homepage": "https://github.com/sahithvibudhi/qest#readme"
+}
