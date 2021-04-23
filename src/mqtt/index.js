@@ -32,7 +32,16 @@ const onMessage = (handler) => {
 }
 
 const messageFromOtherProtocol = (payload) => {
-    console.log(payload);
+    aedes.publish({
+        cmd: 'publish',
+         // TODO: figure out and change this later
+        messageId: 42,
+        qos: 2,
+        dup: false,
+        topic: payload.topic,
+        payload: Buffer.from(payload),
+        retain: false
+    }, (err) => console.error(err));
 }
 
 const broadCast = async (payload) => {
@@ -43,8 +52,10 @@ aedes.on('publish', async function (packet, client) {
     if (!client) return;
     broadCast({
         protocol,
+        request_id: client.id,
         topic: packet.topic,
         payload: packet.payload.toString(),
+        timestamp: new Date().getTime(),
     });
 })
 
