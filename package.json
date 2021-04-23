@@ -16,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/sahithvibudhi/qest/issues"
   },
-  "homepage": "https://github.com/sahithvibudhi/qest#readme"
+  "homepage": "https://github.com/sahithvibudhi/qest#readme",
+  "dependencies": {
+    "aedes": "^0.46.0",
+    "aedes-persistence-mongodb": "^8.2.0",
+    "mqemitter-mongodb": "^7.0.4"
+  }
 }

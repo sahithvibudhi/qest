@@ -12,6 +12,10 @@ const broadCast = async (payload) => {
     onMessageSubscribers.map(handler => handler(payload));
 }
 
+const setup = () => {
+
+}
+
 module.exports = {
-    onMessage, messageFromOtherProtocol
+    onMessage, messageFromOtherProtocol, setup
 }

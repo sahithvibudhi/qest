@@ -14,4 +14,8 @@ for (const idx in protocols) {
     const remainingProtocols = protocols.filter((ele, i) => i != idx);
     remainingProtocols.map(protocol => protocols[idx].onMessage(protocol.messageFromOtherProtocol));
 }
+
 // setup
+protocols.map(protocol => {
+    protocol.setup();
+});

@@ -17,3 +17,14 @@ Message Payload is passed
 `messageFromOtherProtocol`
 
 Write this method on your protocol file to subscribe for messages on other protocols
+
+arg: payload
+format:
+```json
+{
+    "protocol": <string>, // MQTT | REST | CoAP etc
+    "topic": <string>, //which topic does this belong to
+    "payload": <string> | JSON, // when was received by the server
+    "timestamp": UTC, when it is received
+}
+```
