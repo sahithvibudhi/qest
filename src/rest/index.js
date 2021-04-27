@@ -1,3 +1,10 @@
+const express = require('express');
+
+const logger = require('../logger');
+
+const app = express();
+const port = 8000;
+
 const onMessageSubscribers = [];
 
 const onMessage = (handler) => {
@@ -5,7 +12,7 @@ const onMessage = (handler) => {
 }
 
 const messageFromOtherProtocol = (payload) => {
-    console.log(payload);
+    logger.debug('rest', payload);
 }
 
 const broadCast = async (payload) => {
@@ -13,7 +20,9 @@ const broadCast = async (payload) => {
 }
 
 const setup = () => {
-
+    app.listen(port, () => {
+        logger.info('🚀 REST server is up and running on port: %s', port);
+    });
 }
 
 module.exports = {

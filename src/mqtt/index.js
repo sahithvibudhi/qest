@@ -4,6 +4,8 @@ const aedesFunc = require('aedes');
 const mqemitter = require('mqemitter-mongodb');
 const mongoPersistence = require('aedes-persistence-mongodb');
 
+const logger = require('../logger');
+
 // TODO: 
 // read MONGO_URL, port from env
 // user persistant mongo with aedes - already installed
@@ -61,7 +63,7 @@ aedes.on('publish', async function (packet, client) {
 
 const setup = () => {
     server.listen(port, function () {
-        console.log('server started and listening on port ', port)
+        logger.info('🚀 MQTT server is up and running on port: %s', port);
     });
 }
 

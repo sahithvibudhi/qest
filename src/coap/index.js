@@ -1,3 +1,5 @@
+const logger = require('../logger');
+
 const onMessageSubscribers = [];
 
 const onMessage = (handler) => {
@@ -5,7 +7,7 @@ const onMessage = (handler) => {
 }
 
 const messageFromOtherProtocol = (payload) => {
-    console.log(payload);
+    logger.debug('caop', payload);
 }
 
 const broadCast = async (payload) => {
