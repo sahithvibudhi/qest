@@ -1,4 +1,9 @@
+const coap = require('coap');
+
 const logger = require('../logger');
+
+const server = coap.createServer();
+const port = 5683;
 
 const onMessageSubscribers = [];
 
@@ -14,8 +19,14 @@ const broadCast = async (payload) => {
     onMessageSubscribers.map(handler => handler(payload));
 }
 
-const setup = () => {
+server.on('request', function(req, res) {
+    res.end('Hello ' + req.url.split('/')[1] + '\n')
+});
 
+const setup = () => {
+    server.listen(function() {
+        logger.info('🚀 COAP server is up and running on port: %s', port);
+    });
 }
 
 module.exports = {

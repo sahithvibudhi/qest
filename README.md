@@ -3,7 +3,12 @@ QEST - Bridge the gap between different IoT protocols
 
 
 # TODO:
-- [] Add Express engine for HTTP
-- [] Add a CoAP server
-- [] Test MQTT with local mongo server
-- [] Setup logger
+- [X] Add Express engine for HTTP
+- [X] Add a CoAP server
+- [X] Test MQTT with local mongo server
+- [X] Setup logger
+- [] Setup REST GET endpoints
+- [] Setup COAP GET endpoints
+- [] Setup COAP POST endpoints
+- [] Brain storm dashboard
+- [] Setup docker
