@@ -1,5 +1,7 @@
 // import external libraries
+const dotenv = require('dotenv');
 
+dotenv.config();
 
 // import internal utilities
 const rest = require('./rest');

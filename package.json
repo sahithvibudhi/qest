@@ -20,6 +20,8 @@
   "dependencies": {
     "aedes": "^0.46.0",
     "aedes-persistence-mongodb": "^8.2.0",
+    "coap": "^0.24.0",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mqemitter-mongodb": "^7.0.4",
     "winston": "^3.3.3"
