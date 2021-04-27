@@ -41,7 +41,7 @@ const messageFromOtherProtocol = (payload) => {
         qos: 2,
         dup: false,
         topic: payload.topic,
-        payload: Buffer.from(payload),
+        payload: Buffer.from(JSON.stringify(payload)),
         retain: false
     }, (err) => console.error(err));
 }

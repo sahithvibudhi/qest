@@ -4,6 +4,7 @@ const logger = require('../logger');
 
 const app = express();
 const port = 8000;
+const protocol = 'REST';
 
 const onMessageSubscribers = [];
 
@@ -18,6 +19,23 @@ const messageFromOtherProtocol = (payload) => {
 const broadCast = async (payload) => {
     onMessageSubscribers.map(handler => handler(payload));
 }
+
+app.use(express.json());
+
+app.post('/api/:topic', (req, res) => {
+    const {topic} = req.params;
+    const {body} = req;
+    broadCast({
+        protocol,
+        // request_id: client.id, TODO
+        topic,
+        payload: body,
+        timestamp: new Date().getTime(),
+    });
+    res.json({
+        topic, body
+    });
+});
 
 const setup = () => {
     app.listen(port, () => {
