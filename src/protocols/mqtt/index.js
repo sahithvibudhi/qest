@@ -4,7 +4,7 @@ const aedesFunc = require('aedes');
 const mqemitter = require('mqemitter-mongodb');
 const mongoPersistence = require('aedes-persistence-mongodb');
 
-const logger = require('../logger');
+const logger = require('../../logger');
 
 // TODO: 
 // read MONGO_URL, port from env

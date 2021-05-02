@@ -4,9 +4,9 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 // import internal utilities
-const rest = require('./rest');
-const mqtt = require('./mqtt');
-const coap = require('./coap');
+const rest = require('./protocols/rest');
+const mqtt = require('./protocols/mqtt');
+const coap = require('./protocols/coap');
 
 // read config
 // ex: port #s, redis host, username, pass etc

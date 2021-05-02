@@ -1,6 +1,6 @@
 const coap = require('coap');
 
-const logger = require('../logger');
+const logger = require('../../logger');
 
 const server = coap.createServer();
 const port = 5683;
@@ -20,6 +20,14 @@ const broadCast = async (payload) => {
 }
 
 server.on('request', function(req, res) {
+    const path = req.url.split('/');
+    if (path.length  < 1) {
+        res.end('');
+        return;
+    }
+    console.log(res);
+    console.log(req.payload);
+    console.log(req.method);
     res.end('Hello ' + req.url.split('/')[1] + '\n')
 });
 
