@@ -1,28 +1,16 @@
 const net = require('net');
 
 const aedesFunc = require('aedes');
-const mqemitter = require('mqemitter-mongodb');
-const mongoPersistence = require('aedes-persistence-mongodb');
 
+const broker = require('../broker');
 const logger = require('../../logger');
 
 // TODO: 
 // read MONGO_URL, port from env
 // user persistant mongo with aedes - already installed
 const protocol = 'MQTT';
-const MONGO_URI = process.env.MONGO_URI;
 const aedes = aedesFunc({
-    mq: mqemitter({
-        url: MONGO_URI
-    }),
-    persistence: mongoPersistence({
-        url: MONGO_URI,
-        // Optional ttl settings
-        ttl: {
-            packets: 300, // Number of seconds
-            subscriptions: 300
-        }
-    })
+    mq: broker.emitterInstance
 });
 const server = net.createServer(aedes.handle)
 const port = 1883
@@ -68,5 +56,5 @@ const setup = () => {
 }
 
 module.exports = {
-    onMessage, messageFromOtherProtocol, setup
+    onMessage, messageFromOtherProtocol, setup, protocol
 }

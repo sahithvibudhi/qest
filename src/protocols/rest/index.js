@@ -44,5 +44,5 @@ const setup = () => {
 }
 
 module.exports = {
-    onMessage, messageFromOtherProtocol, setup
+    onMessage, messageFromOtherProtocol, setup, protocol
 }

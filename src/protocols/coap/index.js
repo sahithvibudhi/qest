@@ -2,6 +2,7 @@ const coap = require('coap');
 
 const logger = require('../../logger');
 
+const protocol = 'COAP';
 const server = coap.createServer();
 const port = 5683;
 
@@ -38,5 +39,5 @@ const setup = () => {
 }
 
 module.exports = {
-    onMessage, messageFromOtherProtocol, setup
+    onMessage, messageFromOtherProtocol, setup, protocol
 }
