@@ -2,33 +2,36 @@ const express = require('express');
 
 const logger = require('../../logger');
 const broker = require('../broker');
+const db = require('../../db');
 
 const app = express();
-const port = 8000;
+const port = process.env.REST_PORT;
 const protocol = 'REST';
 
 const messageFromOtherProtocol = (payload) => {
     logger.debug('rest', payload);
 }
 
-const broadCast = async (payload) => {
-    broker.emit({protocol, payload});
-}
-
 app.use(express.json());
+
+app.get('/api/:topic', async (req, res) => {
+    const {topic} = req.params;
+    const data = await db.byTopic(topic);
+    return res.json(data);
+});
 
 app.post('/api/:topic', (req, res) => {
     const {topic} = req.params;
     const {body} = req;
-    broadCast({
+    const payload = {
         protocol,
         // request_id: client.id, TODO
         topic,
         payload: body,
         timestamp: new Date().getTime(),
-    });
-    // TODO: save to DB
-
+    };
+    broker.emit({protocol, payload});
+    db.dump(payload);
     res.json({
         topic, body
     });

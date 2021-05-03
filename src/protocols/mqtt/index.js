@@ -4,6 +4,7 @@ const aedesFunc = require('aedes');
 
 const broker = require('../broker');
 const logger = require('../../logger');
+const db = require('../../db');
 
 // TODO: 
 // read MONGO_URL, port from env
@@ -29,19 +30,16 @@ const messageFromOtherProtocol = (payload) => {
     }, (err) => console.error(err));
 }
 
-const broadCast = async (payload) => {
-    onMessageSubscribers.map(handler => handler(payload));
-}
-
 aedes.on('publish', async function (packet, client) {
     if (!client) return;
-    broadCast({
+    const payload = {
         protocol,
         request_id: client.id,
         topic: packet.topic,
         payload: packet.payload.toString(),
         timestamp: new Date().getTime(),
-    });
+    };
+    db.dump(payload);
 })
 
 const setup = () => {
