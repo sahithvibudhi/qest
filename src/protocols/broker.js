@@ -17,7 +17,8 @@ var mq = redis({
     db: REDIS_DB
 });
 
-const emit = (msg) => {
+const emit = ({protocol, payload}) => {
+    const msg = {topic: protocol, payload};
     mq.emit(msg, function () {
         logger.debug('🏁', msg);
     });
@@ -32,9 +33,10 @@ const startWorking = () => {
         const otherProtocols = protocolList.filter(thisProtocol => thisProtocol != protocol);
         // each protocol subscribes to topics from all other protocols
         // ex: REST is subscribing to MQTT, CoAP
+
         mq.on(protocol.protocol, function (message, cb) {
             otherProtocols.map(otherProtocol => {
-                otherProtocol.messageFromOtherProtocol(message);
+                otherProtocol.messageFromOtherProtocol(message.payload);
             });
             // call callback when you are done
             // do not pass any errors, the emitter cannot handle it.

@@ -4,10 +4,10 @@ const logger = require('../../logger');
 
 const protocol = 'COAP';
 const server = coap.createServer();
-const port = 5683;
+const port = process.env.COAP_PORT;
 
 const messageFromOtherProtocol = (payload) => {
-    logger.debug('caop', payload);
+    logger.debug(protocol, payload);
 }
 
 const broadCast = async (payload) => {

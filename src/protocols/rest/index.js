@@ -1,6 +1,7 @@
 const express = require('express');
 
 const logger = require('../../logger');
+const broker = require('../broker');
 
 const app = express();
 const port = 8000;
@@ -11,7 +12,7 @@ const messageFromOtherProtocol = (payload) => {
 }
 
 const broadCast = async (payload) => {
-    onMessageSubscribers.map(handler => handler(payload));
+    broker.emit({protocol, payload});
 }
 
 app.use(express.json());
@@ -26,6 +27,8 @@ app.post('/api/:topic', (req, res) => {
         payload: body,
         timestamp: new Date().getTime(),
     });
+    // TODO: save to DB
+
     res.json({
         topic, body
     });

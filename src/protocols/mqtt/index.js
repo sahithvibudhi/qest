@@ -13,9 +13,10 @@ const aedes = aedesFunc({
     mq: broker.emitterInstance
 });
 const server = net.createServer(aedes.handle)
-const port = 1883;
+const port = process.env.MQTT_PORT;
 
 const messageFromOtherProtocol = (payload) => {
+    logger.debug(protocol, payload);
     aedes.publish({
         cmd: 'publish',
          // TODO: figure out and change this later
