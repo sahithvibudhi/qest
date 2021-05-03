@@ -13,13 +13,7 @@ const aedes = aedesFunc({
     mq: broker.emitterInstance
 });
 const server = net.createServer(aedes.handle)
-const port = 1883
-
-const onMessageSubscribers = [];
-
-const onMessage = (handler) => {
-    onMessageSubscribers.push(handler);
-}
+const port = 1883;
 
 const messageFromOtherProtocol = (payload) => {
     aedes.publish({
@@ -56,5 +50,5 @@ const setup = () => {
 }
 
 module.exports = {
-    onMessage, messageFromOtherProtocol, setup, protocol
+    messageFromOtherProtocol, setup, protocol
 }

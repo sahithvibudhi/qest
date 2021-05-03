@@ -6,12 +6,6 @@ const protocol = 'COAP';
 const server = coap.createServer();
 const port = 5683;
 
-const onMessageSubscribers = [];
-
-const onMessage = (handler) => {
-    onMessageSubscribers.push(handler);
-}
-
 const messageFromOtherProtocol = (payload) => {
     logger.debug('caop', payload);
 }
@@ -39,5 +33,5 @@ const setup = () => {
 }
 
 module.exports = {
-    onMessage, messageFromOtherProtocol, setup, protocol
+    messageFromOtherProtocol, setup, protocol
 }

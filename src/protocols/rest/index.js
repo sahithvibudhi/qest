@@ -6,12 +6,6 @@ const app = express();
 const port = 8000;
 const protocol = 'REST';
 
-const onMessageSubscribers = [];
-
-const onMessage = (handler) => {
-    onMessageSubscribers.push(handler);
-}
-
 const messageFromOtherProtocol = (payload) => {
     logger.debug('rest', payload);
 }
@@ -44,5 +38,5 @@ const setup = () => {
 }
 
 module.exports = {
-    onMessage, messageFromOtherProtocol, setup, protocol
+    messageFromOtherProtocol, setup, protocol
 }
