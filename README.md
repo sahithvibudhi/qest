@@ -8,7 +8,7 @@ QEST - Bridge the gap between different IoT protocols
 - [X] Test MQTT with local mongo server
 - [X] Setup logger
 - [X] Setup REST GET endpoints
-- [ ] Setup COAP GET endpoints
-- [ ] Setup COAP POST endpoints
-- [ ] Brain storm dashboard
+- [X] Setup COAP GET endpoints
+- [X] Setup COAP POST endpoints
+- [ ] Document Architecture
 - [ ] Setup docker
