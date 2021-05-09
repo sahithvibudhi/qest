@@ -1,14 +1,29 @@
 # qest
 QEST - Bridge the gap between different IoT protocols
 
+# Local Setup
+1. Git clone the repository to your local
+```
+git clone https://github.com/sahithvibudhi/qest.git
+```
 
-# TODO:
-- [X] Add Express engine for HTTP
-- [X] Add a CoAP server
-- [X] Test MQTT with local mongo server
-- [X] Setup logger
-- [X] Setup REST GET endpoints
-- [X] Setup COAP GET endpoints
-- [X] Setup COAP POST endpoints
-- [ ] Document Architecture
-- [ ] Setup docker
+2. Change directory to where ever your project is
+```
+cd qest
+```
+
+3. Copy environment variables from .example.env to .env and make changes in the file accordingly
+```
+cp .example.env .env
+```
+
+4. You can start using docker using 
+```
+docker-compose up --force-recreate --build qest-broker
+```
+
+or 
+
+```
+npm start
+```

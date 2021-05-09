@@ -17,6 +17,7 @@ const client = new mongoClient(MONGO_URI);
 let db;
 
 const setup = () => client.connect((err) => {
+    if (err) logger.error(`${err}`);
     logger.info('📦 connection to Mongo Successful');
     db = client.db(dbName);
 });

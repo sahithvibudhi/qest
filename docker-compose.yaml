@@ -1,0 +1,46 @@
+version: '3'
+services:
+  qest-broker:
+    container_name: qest-broker
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - qest-mongodb
+      - qest-redis
+    networks:
+      - qest-network
+    env_file:
+      - .env
+
+  qest-redis:
+    container_name: qest-redis
+    image: redis:5
+    ports:
+      - "6379:6379"
+    restart: always
+    networks:
+      - qest-network
+
+  qest-mongodb:
+    container_name: qest-mongodb
+    image: mongo:3.6
+    restart: always
+    environment:
+      MONGO_DATA_DIR: /data/db
+      MONGO_LOG_DIR: /dev/null
+    volumes:
+      - mongo-data:/data/db
+    ports:
+      - "27017:27017"
+    command: mongod --smallfiles --logpath=/dev/null # --quiet
+    networks:
+      - qest-network
+
+volumes:
+  mongo-data:
+networks:
+  qest-network:
