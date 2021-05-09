@@ -1,7 +1,7 @@
-# qest
+# Qest
 QEST - Bridge the gap between different IoT protocols
 
-# Local Setup
+## Setup
 1. Git clone the repository to your local
 ```
 git clone https://github.com/sahithvibudhi/qest.git
