@@ -33,10 +33,10 @@ It is easy to add more protocols into this architecture.
 
 All the protocols recide in the `src/protocols` directory. 
 
-STEP 1: create a directory in  `src/protocols` with the name of the protocol<br/>
-STEP 2: create an `index.js` file in the newly created directory<br/>
-STEP 3: copy the following template and make necessary changes<br/>
-```
+**STEP 1:** create a directory in  `src/protocols` with the name of the protocol<br/>
+**STEP 2:** create an `index.js` file in the newly created directory<br/>
+**STEP 3:** copy the following template and make necessary changes<br/>
+```javascript
 // import your server here
 
 // these are the helper utilities framework comes with
